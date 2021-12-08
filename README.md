@@ -20,10 +20,6 @@ We don't need the page to look fancy, just inheriting the parent theme styles.
 
 For the responsive styles you are not allowed to rely on any framework to help you with laying out the grid.
 
-
-### Project Submission
-- Fork this repo and submit a PR with only your child theme folder
-
 ### Submission
 Please clone the repository and create a private repository on your own account. Then, create a new branch and submit a Pull Request with your proposed solution. Make sure to add and request review on the PR of the following github users:
 - @miguelcdpmarques
