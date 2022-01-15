@@ -16,8 +16,8 @@ This repository has the minimum list of necessary files, just to run this test. 
 If you want to see how the data flows from the Wordpress API, you can look where the API is hosted (https://wp.mateusavila.com.br/clientes/hubstaff/wp-json).
 
 This api has two custom-made routes:
-- **/api/home**: this routes shows 3 arrays of posts, divided by *sticky*, *featured* and *newest* posts. 
-- **/api/blog**: this route brings the pagination for each newest posts. This route demands the  `?page=[number]`to bring the correct pagination data.
+- **[/api/home](https://wp.mateusavila.com.br/clientes/hubstaff/wp-json/api/home)**: this routes shows 3 arrays of posts, divided by *sticky*, *featured* and *newest* posts. 
+- **[/api/blog](https://wp.mateusavila.com.br/clientes/hubstaff/wp-json/api/blog?page=1)**: this route brings the pagination for each newest posts. This route demands the  `?page=[number]`to bring the correct pagination data.
 
 Every route has an array with all this fields:
 #### Base route
@@ -74,3 +74,5 @@ Every route has an array with all this fields:
 | first_name | string |
 | last_name | string |
 | email | string |
+
+
