@@ -1,34 +1,76 @@
-# wordpress-coding-challenge
-
-### Setting Up Your Enviornment
-
-- Create a new instance of Wordpress.
-- Using the Wordpress import tool, import the included [import.xml](import.xml) file, which will populate your database with ~300 posts.
-
-### Project Requirements
-- Create a child theme to the default WP theme
-- Your task is to create a well-structured homepage tempalte similar to what we currently have on https://blog.hubstaff.com:
-  - One sticky post at the top
-    - The sticky post would take the full width of the container on the page, on all screen sizes.
-  - Using the `add_post_meta` add the ability to feature any post from the wordpress admin. All featured posts will be listed below the sticky post. If a featured post is also a "sticky post", it will only show up as sticky at the top of the page.
-    - The featured posts will be aligned in a grid of 4 articles per row on desktop, 3 articles per row on tablet, and one article per row on mobile.
-  - Below we will have a list of 4 most recent articles (excluding sticky and featured posts)
-    - These 4 articles will also be considered as the first page of the pagination. And clicking on a "See more recent articles" link would bring you to the second page showing posts from the 5th most recent to last, paginated into 10 articles per page. 
-    - The recent posts will be aligned as two per row on tablet and wider screens and one per row on mobile.
-
-We don't need the page to look fancy, just inheriting the parent theme styles. 
-
-For the responsive styles you are not allowed to rely on any framework to help you with laying out the grid.
-
-### Submission
-Please clone the repository and create a private repository on your own account. Then, create a new branch and submit a Pull Request containing only your child theme folder. Make sure to request review on the PR of the following github users:
-- @miguelcdpmarques
-- @stafie
 
 
-### Evaluation Criteria
-We'll be looking at the following criteria when assessing candidate submissions:
-- Code simplicity and clarity
-- Git history, including comments in the PR
+# wordpress-coding-challenge - Hubstaff Front-end Challenge (WP Rest API)
 
-**Good luck!**
+### About the files
+  
+This test will have 2 repositories to work: the WP Rest API repository and the front-end repository. This documents talks only the API routes.
+
+This repository has the minimum list of necessary files, just to run this test. We have here:
+
+- Metabox with the possibility to define **featured post**
+- Custom checkbox just to client decide which post is featured or not
+- Two custom API routes, just to consume the data from Wordpress.
+
+### About the routes
+If you want to see how the data flows from the Wordpress API, you can look where the API is hosted (https://wp.mateusavila.com.br/clientes/hubstaff/wp-json).
+
+This api has two custom-made routes:
+- **/api/home**: this routes shows 3 arrays of posts, divided by *sticky*, *featured* and *newest* posts. 
+- **/api/blog**: this route brings the pagination for each newest posts. This route demands the  `?page=[number]`to bring the correct pagination data.
+
+Every route has an array with all this fields:
+#### Base route
+- data
+	- sticky: Array
+		- Base WP data
+	- featured: Array
+		- Base WP data
+	- newest: Array
+		- Base WP data
+
+#### Base WP data
+| key | value |
+|--|--|
+| id | number |
+| title | string |
+| content | string |
+| excerpt | string |
+| category | CategoryWP Scheme |
+| slug | string |
+| thumbnail | string |
+| width | number |
+| height | number |
+| views | number |
+| date | string (format F j, Y) |
+| updated_date | string (format F j, Y) |
+| author | AuthorWP Scheme |
+
+#### CategoryWP Scheme
+| key | value |
+|--|--|
+| id | number |
+| name | string |
+| slug | string |
+| term_group | number |
+| term_taxonomy_id | number |
+| taxonomy | string |
+| description | string |
+| parent | number |
+| count | number |
+| filter | string |
+| cat_ID | number |
+| category_count | number |
+| category_description | string |
+| cat_name | string |
+| category_nicename | string |
+| category_parent | number |
+
+#### AuthorWP Scheme
+| key | value |
+|--|--|
+| name | string |
+| photo | string |
+| first_name | string |
+| last_name | string |
+| email | string |
